@@ -34,8 +34,8 @@
   text-decoration-skip-ink: none;
 }
 
-@media screen and (max-width: 627px;) {
+@media screen and (max-width: 627px) {
   .card__image {
-    height: 413px;
+    height: 288px;
   }
 }
