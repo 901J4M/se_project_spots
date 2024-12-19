@@ -53,9 +53,9 @@
   width: 149px; /* Set to desired width */
   height: 52px; /* Set to desired height */
   font-size: 14px; /* Adjust font size */
-  border: none; /* Remove border if needed */
   background-color: #212121;
   color: #fcf5e5;
+  border-radius: 8px;
 }
 
 @media screen and (max-width: 627px) {
