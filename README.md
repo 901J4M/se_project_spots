@@ -15,7 +15,7 @@ Create an interactive social media web application that allows users to add and 
 ## Deployment
 
 This webpage is deployed to GitHub Pages
--Deplyment Link: https://901j4m.github.io/spots/
+-Deplyment Link: https://901j4m.github.io/se_project_spots/
 
 ## Video
 
