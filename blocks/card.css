@@ -25,6 +25,9 @@
   background-color: transparent;
   opacity: 0.4;
   cursor: pointer;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .card__like-button:hover {
@@ -53,19 +56,12 @@
 
   .card__title {
     max-width: 235px;
-    font-family: Poppins;
     font-size: 16px;
-    font-weight: 500;
     line-height: 16px;
-    text-align: left;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
   }
 
   .card__like-button {
     width: 20px;
     height: 18px;
-    gap: 0px;
-    opacity: 0.4px;
   }
 }
