@@ -64,8 +64,8 @@
   font-size: 14px; /* Adjust font size */
   background-color: #212121;
   color: #fcf5e5;
-  border-radius: 8px;
   cursor: pointer;
+  border-radius: 8px;
 }
 
 .profile__add-button:hover {
