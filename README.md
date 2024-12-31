@@ -11,6 +11,7 @@ Create an interactive social media web application that allows users to add and 
 -HTML
 -CSS
 -Responsive Design
+-Javascript
 
 ## Deployment
 
