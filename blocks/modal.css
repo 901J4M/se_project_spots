@@ -44,6 +44,7 @@
   max-width: 80vw;
   max-height: 80vh;
   border-radius: 8px;
+  width: 100%;
 }
 
 .modal__close-button {
@@ -145,6 +146,11 @@
     line-height: 1;
     font-size: 20px;
     margin: 10px 0 34px;
+  }
+
+  .modal__container_type_preview {
+    padding: 0;
+    max-width: 288px;
   }
 
   .modal__image {
