@@ -124,10 +124,10 @@ previewCloseButton.addEventListener("click", () => {
 
 cardModalButton.addEventListener("click", () => {
   openModel(cardModal);
-}),
-  cardModalCloseButton.addEventListener("click", () => {
-    closeModal(cardModal);
-  });
+});
+cardModalCloseButton.addEventListener("click", () => {
+  closeModal(cardModal);
+});
 
 editformElement.addEventListener("submit", handleEditFormSubmit);
 cardForm.addEventListener("submit", handleAddCardSubmit);
