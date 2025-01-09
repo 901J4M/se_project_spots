@@ -45,6 +45,7 @@
   max-height: 80vh;
   border-radius: 8px;
   width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal__close-button {
@@ -136,10 +137,6 @@
     padding: 12px;
   }
 
-  .modal__close-btn_type_preview {
-    position: sticky;
-  }
-
   .modal__title {
     font-weight: 500;
     font-size: 20px;
@@ -166,6 +163,11 @@
   .modal__close-button {
     top: 12px;
     right: 12px;
+  }
+
+  .modal__close-button_type_preview {
+    right: 0px;
+    top: -41px;
   }
 
   .modal__label {
