@@ -164,8 +164,8 @@
   }
 
   .modal__close-button {
-    top: -30px;
-    right: 0;
+    top: 12px;
+    right: 12px;
   }
 
   .modal__label {
