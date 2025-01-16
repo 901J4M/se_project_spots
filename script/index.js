@@ -105,6 +105,8 @@ function handleAddCardSubmit(evt) {
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
   evt.target.reset();
+  disableButton(, validationConfig);
+  //ask how should I disable the button after the form is submitted
   closeModal(cardModal);
 }
 
