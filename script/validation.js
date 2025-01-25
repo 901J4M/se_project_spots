@@ -1,7 +1,7 @@
 const validationConfig = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
+  submitButtonSelector: ".modal__submit-button",
   inactiveButtonClass: "modal__button_disabled",
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__input-error_active",
@@ -35,9 +35,9 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
-const toggleButtonState = (inputList, buttonEl) => {
+const toggleButtonState = (inputList, buttonEl, config) => {
   if (hasInvalidInput(inputList)) {
-    disableButton(buttonEl);
+    disableButton(buttonEl, config);
   } else {
     buttonEl.disabled = false;
     //remove the disabled attribute from the button
@@ -51,11 +51,19 @@ const disableButton = (buttonEl, config) => {
   // dont forget the css
 };
 
-const setEventListeners = (formEl) => {
-  const inputList = Array.from(formEl.querySelectorAll(".modal__input"));
-  const buttonElement = formEl.querySelector(".modal__button");
+const resetValidation = (formEl, inputList) => {
+  inputList.forEach((inputEl) => {
+    hideInputError(formEl, inputEl, config);
+  });
+};
 
-  toggleButtonState(inputList, buttonEl);
+//TODO: use the setting function to pass the config object
+
+const setEventListeners = (formEl, config) => {
+  const inputList = Array.from(formEl.querySelectorAll(config.inputSelector));
+  const buttonElement = formEl.querySelector(config.submitButtonSelector);
+
+  toggleButtonState(inputList, buttonElement, config);
 
   inputList.forEach((inputEl, config) => {
     inputEl.addEventListener("input", function () {
@@ -65,9 +73,11 @@ const setEventListeners = (formEl) => {
   });
 };
 
-const enableValidation = () => {
-  const formlist = document.querySelectorAll(".modal__form");
+const enableValidation = (config) => {
+  const formlist = document.querySelectorAll(config.formSelector);
   formlist.forEach((formEl) => {
-    setEventListeners(formEl);
+    setEventListeners(formEl, config);
   });
 };
+
+enableValidation(validationConfig);

@@ -105,7 +105,7 @@ function handleAddCardSubmit(evt) {
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
   evt.target.reset();
-  disableButton(, validationConfig);
+  disableButton(settings, validationConfig);
   //ask how should I disable the button after the form is submitted
   closeModal(cardModal);
 }
@@ -113,6 +113,7 @@ function handleAddCardSubmit(evt) {
 profileEditButton.addEventListener("click", () => {
   editModalDescriptionInput.value = profileDescription.textContent;
   editModalNameInput.value = profileName.textContent;
+  resetValidation(editformElement, inputList);
   openModel(editModal);
 });
 editModalcloseButton.addEventListener("click", () => {
