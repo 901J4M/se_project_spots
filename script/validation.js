@@ -15,13 +15,15 @@ const showInputError = (formEl, inputEl, errorMsg, config) => {
 };
 
 const hideInputError = (formEl, inputEl, config) => {
-  const errorMsgEl = formEl.querySelector(`#${inputEl.id}error`);
+  const errorMsgEl = formEl.querySelector(`#${inputEl.id}-error`);
+  console.log(errorMsgEl);
   errorMsgEl.textContent = "";
   inputEl.classList.remove("modal__input_type_error");
   errorMsgEl.classList.remove(config.errorClass);
 };
 
 const checkInputValidity = (formEl, inputEl, config) => {
+  console.log(config.inputSelector);
   if (inputEl.validity.valid) {
     showInputError(formEl, inputEl, inputEl.validationMessage, config);
   } else {
@@ -35,18 +37,19 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
-const toggleButtonState = (inputList, buttonEl, config) => {
+const toggleButtonState = (inputList, buttonElement, config) => {
   if (hasInvalidInput(inputList)) {
-    disableButton(buttonEl, config);
+    disableButton(buttonElement, config);
   } else {
-    buttonEl.disabled = false;
+    buttonElement.disabled = false;
     //remove the disabled attribute from the button
   }
 };
 
-const disableButton = (buttonEl, config) => {
-  buttonEl.disabled = true;
-  buttonEl.classList.add(config.inactiveButtonClass);
+const disableButton = (buttonElement, config) => {
+  console.log(config);
+  buttonElement.classList.add(config.inactiveButtonClass);
+  buttonElement.disabled = true;
   //add a modifier class to the button to make it greyed out
   // dont forget the css
 };
@@ -68,16 +71,18 @@ const setEventListeners = (formEl, config) => {
   inputList.forEach((inputEl, config) => {
     inputEl.addEventListener("input", function () {
       checkInputValidity(formEl, inputEl, config);
-      toggleButtonState(inputList, buttonEl);
+      toggleButtonState(inputList, buttonElement, config);
     });
   });
 };
 
 const enableValidation = (config) => {
+  console.log(config);
   const formlist = document.querySelectorAll(config.formSelector);
   formlist.forEach((formEl) => {
     setEventListeners(formEl, config);
   });
 };
 
+const inactiveButtonClass = "modal__button_disabled";
 enableValidation(validationConfig);
