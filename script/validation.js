@@ -56,7 +56,7 @@ const disableButton = (buttonElement, config) => {
 
 const resetValidation = (formEl, inputList) => {
   inputList.forEach((inputEl) => {
-    hideInputError(formEl, inputEl, config);
+    hideInputError(formEl, inputEl, config, inputList);
   });
 };
 
@@ -84,4 +84,7 @@ const enableValidation = (config) => {
   });
 };
 
-enableValidation(disableButton, validationConfig);
+const editFormSubmitButton = editformElement.querySelector(
+  ".modal__submit-button"
+);
+enableValidation(validationConfig);
