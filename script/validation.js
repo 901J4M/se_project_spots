@@ -25,9 +25,9 @@ const hideInputError = (formEl, inputEl, config) => {
 const checkInputValidity = (formEl, inputEl, config) => {
   console.log(config.inputSelector);
   if (inputEl.validity.valid) {
-    showInputError(formEl, inputEl, inputEl.validationMessage, config);
-  } else {
     hideInputError(formEl, inputEl, config);
+  } else {
+    showInputError(formEl, inputEl, inputEl.validationMessage, config);
   }
 };
 
@@ -68,7 +68,7 @@ const setEventListeners = (formEl, config) => {
 
   toggleButtonState(inputList, buttonElement, config);
 
-  inputList.forEach((inputEl, config) => {
+  inputList.forEach((inputEl) => {
     inputEl.addEventListener("input", function () {
       checkInputValidity(formEl, inputEl, config);
       toggleButtonState(inputList, buttonElement, config);
@@ -84,5 +84,4 @@ const enableValidation = (config) => {
   });
 };
 
-const inactiveButtonClass = "modal__button_disabled";
-enableValidation(validationConfig);
+enableValidation(disableButton, validationConfig);
