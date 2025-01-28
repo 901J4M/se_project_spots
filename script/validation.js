@@ -16,6 +16,7 @@ const showInputError = (formEl, inputEl, errorMsg, config) => {
 
 const hideInputError = (formEl, inputEl, config) => {
   const errorMsgEl = formEl.querySelector(`#${inputEl.id}-error`);
+  console.log(inputEl);
   console.log(errorMsgEl);
   errorMsgEl.textContent = "";
   inputEl.classList.remove("modal__input_type_error");
@@ -54,9 +55,9 @@ const disableButton = (buttonElement, config) => {
   // dont forget the css
 };
 
-const resetValidation = (formEl, inputList) => {
+const resetValidation = (formEl, inputList, config) => {
   inputList.forEach((inputEl) => {
-    hideInputError(formEl, inputEl, config, inputList);
+    hideInputError(formEl, inputEl, config);
   });
 };
 

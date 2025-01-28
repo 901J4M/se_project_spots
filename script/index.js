@@ -109,11 +109,13 @@ function handleAddCardSubmit(evt) {
   closeModal(cardModal);
 }
 
-const inputList = Array.from(editformElement.querySelectorAll(".modal__input"));
+const editInputList = Array.from(
+  editformElement.querySelectorAll(".modal__input")
+);
 profileEditButton.addEventListener("click", () => {
   editModalDescriptionInput.value = profileDescription.textContent;
   editModalNameInput.value = profileName.textContent;
-  resetValidation(editformElement, inputList); // define inputList
+  resetValidation(editformElement, editInputList, validationConfig); // define inputList
   openModel(editModal);
 });
 editModalcloseButton.addEventListener("click", () => {
