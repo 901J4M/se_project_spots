@@ -54,10 +54,12 @@ const cardsList = document.querySelector(".cards__list");
 
 function openModel(modal) {
   modal.classList.add("modal_opened");
+  modal.addEventListener("click", closeModalOnOverlay); // here you create aevent listener
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  // delete event listener
 }
 
 function getCardElement(data) {
@@ -141,3 +143,22 @@ initialCards.forEach((item, i, arr) => {
   const cardElement = getCardElement(item);
   cardsList.append(cardElement);
 });
+
+function closeModalOnEsc(evt) {
+  if (evt.key === "Escape") {
+    // Check if the pressed key is "Escape"
+    const modal = document.querySelector(".modal_opened"); // Select the currently open modal
+    closeModal(modal); // Call a function to close the modal
+  }
+}
+
+document.addEventListener("keydown", closeModalOnEsc);
+
+document.removeEventListener("keydown", closeModalOnEsc);
+
+function closeModalOnOverlay(evt) {
+  if (evt.target.classList.contains("modal")) {
+    // Check if the clicked element is the modal itself (overlay)
+    closeModal(evt.target); // Close the modal
+  }
+}
