@@ -140,7 +140,10 @@
 
 .modal__error {
   display: block;
-  color: red;
+  font-size: 16px;
+  line-height: 17.6px;
+  color: #ff0000b2;
+  opacity: 0.7;
   margin-top: 8px;
 }
 
@@ -154,7 +157,7 @@
   cursor: pointer;
 }
 
-.modal__button_disabled {
+.modal__submit-button_disabled {
   background-color: #212121;
   opacity: 0.2;
   cursor: not-allowed;

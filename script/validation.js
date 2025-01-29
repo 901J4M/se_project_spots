@@ -2,7 +2,7 @@ const validationConfig = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__submit-button",
-  inactiveButtonClass: "modal__button_disabled",
+  inactiveButtonClass: "modal__submit-button_disabled",
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__input-error_active",
 };
@@ -19,7 +19,7 @@ const hideInputError = (formEl, inputEl, config) => {
   console.log(inputEl);
   console.log(errorMsgEl);
   errorMsgEl.textContent = "";
-  inputEl.classList.remove("modal__input_type_error");
+  config.inputErrorClass && inputEl.classList.remove(config.inputErrorClass);
   errorMsgEl.classList.remove(config.errorClass);
 };
 
@@ -81,7 +81,4 @@ const enableValidation = (config) => {
   });
 };
 
-const editFormSubmitButton = editformElement.querySelector(
-  ".modal__submit-button"
-);
 enableValidation(validationConfig);
