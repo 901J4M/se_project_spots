@@ -102,7 +102,7 @@ function handleEditFormSubmit(evt) {
   profileName.textContent = editModalNameInput.value;
   profileDescription.textContent = editModalDescriptionInput.value;
   closeModal(editModal);
-  disableButton(editFormSubmitButton, validationConfig, cardModalCloseButton);
+  disableButton(editFormSubmitButton, validationConfig);
   evt.target.reset();
 }
 
@@ -114,7 +114,7 @@ function handleAddCardSubmit(evt) {
   cardsList.prepend(cardElement);
   closeModal(cardModal);
   evt.target.reset();
-  disableButton(editFormSubmitButton, validationConfig);
+  disableButton(addCardSubmitButton, validationConfig);
   //cardForm.reset();
 }
 
@@ -125,7 +125,7 @@ profileEditButton.addEventListener("click", () => {
   editModalDescriptionInput.value = profileDescription.textContent;
   editModalNameInput.value = profileName.textContent;
 
-  resetValidation(editformElement, editInputList); // define inputList
+  resetValidation(editformElement, editInputList, validationConfig); // define inputList
   openModal(editModal);
 });
 editModalcloseButton.addEventListener("click", () => {
@@ -139,7 +139,6 @@ previewCloseButton.addEventListener("click", () => {
 
 const cardInputList = Array.from(cardForm.querySelectorAll(".modal__input"));
 cardModalButton.addEventListener("click", () => {
-  toggleButtonState(cardInputList, addCardSubmitButton, validationConfig);
   openModal(cardModal);
 });
 cardModalCloseButton.addEventListener("click", () => {
