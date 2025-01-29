@@ -42,6 +42,7 @@ const editModalDescriptionInput = editModal.querySelector(
 
 const cardModal = document.querySelector("#add-card-modal");
 const cardForm = cardModal.querySelector(".modal__form");
+const addCardSubmitButton = cardModal.querySelector(".modal__submit-button");
 const cardModalCloseButton = cardModal.querySelector(".modal__close-button");
 const cardNameInput = cardModal.querySelector("#add-card-name-input");
 const cardLinkInput = cardModal.querySelector("#add-card-link-input");
@@ -113,7 +114,7 @@ function handleAddCardSubmit(evt) {
   cardsList.prepend(cardElement);
   closeModal(cardModal);
   evt.target.reset();
-  disableButton(editFormSubmitButton, validationConfig, cardModalCloseButton);
+  disableButton(editFormSubmitButton, validationConfig);
   //cardForm.reset();
 }
 
@@ -123,7 +124,8 @@ const editInputList = Array.from(
 profileEditButton.addEventListener("click", () => {
   editModalDescriptionInput.value = profileDescription.textContent;
   editModalNameInput.value = profileName.textContent;
-  resetValidation(editformElement, editInputList, validationConfig); // define inputList
+
+  resetValidation(editformElement, editInputList); // define inputList
   openModal(editModal);
 });
 editModalcloseButton.addEventListener("click", () => {
@@ -137,6 +139,7 @@ previewCloseButton.addEventListener("click", () => {
 
 const cardInputList = Array.from(cardForm.querySelectorAll(".modal__input"));
 cardModalButton.addEventListener("click", () => {
+  toggleButtonState(cardInputList, addCardSubmitButton, validationConfig);
   openModal(cardModal);
 });
 cardModalCloseButton.addEventListener("click", () => {
