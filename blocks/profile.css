@@ -47,6 +47,8 @@
 }
 
 .profile__edit-button {
+  display: flex;
+  gap: 8px;
   cursor: pointer;
   border: none;
   background-color: #fcf5e5;

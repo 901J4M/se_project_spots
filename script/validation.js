@@ -51,8 +51,6 @@ const disableButton = (buttonElement, config) => {
   console.log(config);
   buttonElement.classList.add(config.inactiveButtonClass);
   buttonElement.disabled = true;
-  //add a modifier class to the button to make it greyed out
-  // dont forget the css
 };
 
 const resetValidation = (formEl, inputList, config) => {
@@ -60,8 +58,6 @@ const resetValidation = (formEl, inputList, config) => {
     hideInputError(formEl, inputEl, config);
   });
 };
-
-//TODO: use the setting function to pass the config object
 
 const setEventListeners = (formEl, config) => {
   const inputList = Array.from(formEl.querySelectorAll(config.inputSelector));

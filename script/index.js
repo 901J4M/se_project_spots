@@ -54,12 +54,14 @@ const cardsList = document.querySelector(".cards__list");
 
 function openModel(modal) {
   modal.classList.add("modal_opened");
-  modal.addEventListener("click", closeModalOnOverlay); // here you create aevent listener
+  modal.addEventListener("click", closeModalOnOverlay);
+  document.addEventListener("keydown", closeModalOnEsc);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
-  // delete event listener
+  modal.removeEventListener("click", closeModalOnOverlay);
+  document.removeEventListener("keydown", closeModalOnEsc);
 }
 
 function getCardElement(data) {
@@ -98,6 +100,8 @@ function handleEditFormSubmit(evt) {
   profileName.textContent = editModalNameInput.value;
   profileDescription.textContent = editModalDescriptionInput.value;
   closeModal(editModal);
+  disableButton(editFormSubmitButton, validationConfig);
+  evt.target.reset();
 }
 
 function handleAddCardSubmit(evt) {
@@ -106,9 +110,9 @@ function handleAddCardSubmit(evt) {
   const inputValues = { name: cardNameInput.value, link: cardLinkInput.value };
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
-  evt.target.reset();
-  disableButton(editFormSubmitButton, validationConfig);
   closeModal(cardModal);
+  disableButton(editFormSubmitButton, validationConfig);
+  evt.target.reset();
 }
 
 const editInputList = Array.from(
@@ -129,8 +133,10 @@ previewCloseButton.addEventListener("click", () => {
   closeModal(previewModel);
 });
 
+const cardInputList = Array.from(cardForm.querySelectorAll(".modal__input"));
 cardModalButton.addEventListener("click", () => {
   openModel(cardModal);
+  resetValidation(cardForm, cardInputList, validationConfig);
 });
 cardModalCloseButton.addEventListener("click", () => {
   closeModal(cardModal);
@@ -145,9 +151,11 @@ initialCards.forEach((item, i, arr) => {
 });
 
 function closeModalOnEsc(evt) {
+  console.log(evt);
   if (evt.key === "Escape") {
     // Check if the pressed key is "Escape"
     const modal = document.querySelector(".modal_opened"); // Select the currently open modal
+    console.log(modal);
     closeModal(modal); // Call a function to close the modal
   }
 }
